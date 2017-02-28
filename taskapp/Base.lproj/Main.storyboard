@@ -62,16 +62,39 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="sCE-sv-uwO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LSN-G3-Umx"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LSN-G3-Umx">
+                            <connections>
+                                <segue destination="gfs-YR-PQj" kind="show" id="0cQ-IY-hYC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="N9l-Nb-N7A" id="vjg-wS-hOw"/>
+                        <segue destination="gfs-YR-PQj" kind="show" identifier="cellSegue" id="qfm-C1-RTR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="138.98050974512745"/>
+        </scene>
+        <!--Input View Controller-->
+        <scene sceneID="xDz-IT-uW9">
+            <objects>
+                <viewController id="gfs-YR-PQj" customClass="InputViewController" customModule="taskapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lo1-oA-6An"/>
+                        <viewControllerLayoutGuide type="bottom" id="PsI-fM-NY3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qum-U1-U4k">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nge-ce-nXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vZf-gI-EZG">
@@ -92,4 +115,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qfm-C1-RTR"/>
+    </inferredMetricsTieBreakers>
 </document>
