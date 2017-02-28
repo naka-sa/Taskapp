@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,12 +90,71 @@
                     <view key="view" contentMode="scaleToFill" id="Qum-U1-U4k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qLo-0Z-oRG">
+                                <rect key="frame" x="16" y="74" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-gK-YxX">
+                                <rect key="frame" x="16" y="105" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVd-ct-V72">
+                                <rect key="frame" x="16" y="145" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l4f-2d-14x">
+                                <rect key="frame" x="16" y="176" width="343" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="aPp-Na-loy"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Yxz-BT-5AM">
+                                <rect key="frame" x="0.0" y="306" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="WEu-6H-gOp"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="509977556.73299301">
+                                    <!--2017-02-28 12:25:56 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l4f-2d-14x" firstAttribute="trailing" secondItem="Qum-U1-U4k" secondAttribute="trailingMargin" id="3tI-fH-L4e"/>
+                            <constraint firstItem="HVd-ct-V72" firstAttribute="leading" secondItem="Qum-U1-U4k" secondAttribute="leadingMargin" id="3vf-hT-qFe"/>
+                            <constraint firstItem="qLo-0Z-oRG" firstAttribute="top" secondItem="Lo1-oA-6An" secondAttribute="bottom" constant="10" id="4d6-dY-7Un"/>
+                            <constraint firstItem="Pff-gK-YxX" firstAttribute="trailing" secondItem="Qum-U1-U4k" secondAttribute="trailingMargin" id="5Tt-lV-3ks"/>
+                            <constraint firstItem="qLo-0Z-oRG" firstAttribute="leading" secondItem="Qum-U1-U4k" secondAttribute="leadingMargin" id="5e7-KE-0Hh"/>
+                            <constraint firstItem="Yxz-BT-5AM" firstAttribute="top" secondItem="l4f-2d-14x" secondAttribute="bottom" constant="10" id="JNM-SE-O09"/>
+                            <constraint firstItem="l4f-2d-14x" firstAttribute="leading" secondItem="Qum-U1-U4k" secondAttribute="leadingMargin" id="JgN-8a-eug"/>
+                            <constraint firstItem="Pff-gK-YxX" firstAttribute="leading" secondItem="Qum-U1-U4k" secondAttribute="leadingMargin" id="OGN-nw-ml5"/>
+                            <constraint firstItem="l4f-2d-14x" firstAttribute="top" secondItem="HVd-ct-V72" secondAttribute="bottom" constant="10" id="RAq-1L-8q4"/>
+                            <constraint firstItem="HVd-ct-V72" firstAttribute="top" secondItem="Pff-gK-YxX" secondAttribute="bottom" constant="10" id="UJf-w2-Oaj"/>
+                            <constraint firstItem="Pff-gK-YxX" firstAttribute="top" secondItem="qLo-0Z-oRG" secondAttribute="bottom" constant="10" id="XJZ-H2-kdY"/>
+                            <constraint firstAttribute="trailing" secondItem="Yxz-BT-5AM" secondAttribute="trailing" id="j1q-21-CHM"/>
+                            <constraint firstItem="Yxz-BT-5AM" firstAttribute="leading" secondItem="Qum-U1-U4k" secondAttribute="leading" id="rbS-nU-Idn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsTextView" destination="l4f-2d-14x" id="EgY-Bc-7Wu"/>
+                        <outlet property="datePicker" destination="Yxz-BT-5AM" id="X6S-3o-Wwh"/>
+                        <outlet property="titleTextField" destination="Pff-gK-YxX" id="UZH-pn-M8e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nge-ce-nXr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846" y="139"/>
+            <point key="canvasLocation" x="1845.5999999999999" y="138.98050974512745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vZf-gI-EZG">
