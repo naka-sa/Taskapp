@@ -10,9 +10,12 @@ import UIKit
 import RealmSwift   // ←追加
 import UserNotifications    // 追加
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
@@ -20,14 +23,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // DB内のタスクが格納されるリスト。
     // 日付近い順\順でソート：降順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
-    let taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending: false)   // ←追加
+    var taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending: false)   // ←追加
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 背景をタップしたらdismissKeyboardメソッドを呼ぶように設定する
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+
+        
         tableView.delegate = self
         tableView.dataSource = self
-
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Cellに値を設定する.
         let task = taskArray[indexPath.row]
-        cell.textLabel?.text = task.title
+        cell.textLabel?.text = "タイトル： \(task.title) カテゴリ: \(task.category)"
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -97,6 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+    
     // segue で画面遷移するに呼ばれる
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let inputViewController:InputViewController = segue.destination as! InputViewController
@@ -119,6 +129,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    //検索ボタンを押した時の動作
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // NSPredicateで検索条件を指定
+        let predicate = NSPredicate(format: "category = %@", searchBar.text!)
+        taskArray = realm.objects(Task.self).filter(predicate)
+        //検索結果を表示
+        tableView.reloadData()
+    }
+    
+    //キャンセルボタンを押した時の動作
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //条件指定
+        taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending: false)
+        //検索文字を削除
+        searchBar.text! = ""
+        //全データを表示
+        tableView.reloadData()
+    }
+    
+    func dismissKeyboard(){
+        // キーボードを閉じる
+        view.endEditing(true)
     }
     
 }
